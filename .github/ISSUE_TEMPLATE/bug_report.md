@@ -15,7 +15,7 @@ assignees: ''
 ## Describe the bug
 A clear and concise description of what the bug is.
 
-## o Reproduce
+## To Reproduce
 Steps to reproduce the behaviour:
 1. Go to '...'
 2. Click on '....'
