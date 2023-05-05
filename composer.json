@@ -22,6 +22,7 @@
         "drupal/search_api": "^1.29",
         "drupal/shield": "^1.7",
         "drupal/structure_sync": "^2.0",
+        "drupal/token_filter": "^2.0",
         "drupal/token": "^1.11",
         "drupal/upgrade_status": "^4.0",
         "drush/drush": "^11.0"
