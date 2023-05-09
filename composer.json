@@ -5,6 +5,7 @@
     "license": "GPL-2.0-or-later",
     "homepage": "https://github.com/bcgov/bcbb",
     "require": {
+        "cweagans/composer-patches": "^1",
         "drupal/admin_toolbar": "^3.0",
         "drupal/allowed_formats": "^2.0",
         "drupal/better_exposed_filters": "^6.0",
@@ -26,5 +27,9 @@
         "drupal/token": "^1.11",
         "drupal/upgrade_status": "^4.0",
         "drush/drush": "^11.0"
+    },
+    "extra": {
+        "patches": {
+        }
     }
 }
