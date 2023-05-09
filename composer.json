@@ -30,6 +30,9 @@
     },
     "extra": {
         "patches": {
+            "drupal/form_mode_control": {
+                "3359220 - Add schema for form_mode_control.settings": "https://www.drupal.org/files/issues/2023-05-09/form_mode_control-missing_schema-3359220-2.patch"
+            }
         }
     }
 }
