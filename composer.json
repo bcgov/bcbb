@@ -20,6 +20,7 @@
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/panels": "^4.7",
         "drupal/paragraphs": "^1.15",
+        "drupal/pathauto": "^1.11",
         "drupal/search_api": "^1.29",
         "drupal/shield": "^1.7",
         "drupal/structure_sync": "^2.0",
