@@ -28,6 +28,7 @@
         "drupal/token_filter": "^2.0",
         "drupal/token": "^1.11",
         "drupal/upgrade_status": "^4.0",
+        "drupal/twig_tweak": "^3.2",
         "drush/drush": "^11.0"
     },
     "extra": {
