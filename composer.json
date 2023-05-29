@@ -18,6 +18,7 @@
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/linkit": "^6.0@beta",
         "drupal/openid_connect": "^3.0@alpha",
+        "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.7",
         "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",
