@@ -22,6 +22,7 @@
         "drupal/panels": "^4.7",
         "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",
+        "drupal/realname": "^2.0",
         "drupal/search_api": "^1.29",
         "drupal/shield": "^1.7",
         "drupal/structure_sync": "^2.0",
