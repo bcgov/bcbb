@@ -31,6 +31,7 @@
         "drupal/token": "^1.11",
         "drupal/twig_tweak": "^3.2",
         "drupal/upgrade_status": "^4.0",
+        "drupal/views_bulk_edit": "^2.8",
         "drupal/views_bulk_operations": "^4.2",
         "drush/drush": "^11.0"
     },
