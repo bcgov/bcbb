@@ -35,7 +35,7 @@
         "drupal/upgrade_status": "^4.0",
         "drupal/views_bulk_edit": "^2.8",
         "drupal/views_bulk_operations": "^4.2",
-        "drupal/better_exposed_filters:^6.0",
+        "drupal/better_exposed_filters": "^6.0",
         "drush/drush": "^11.0"
     },
     "extra": {
