@@ -1,0 +1,13 @@
+name: 'BC Base Build Search'
+description: 'Search configuration.'
+type: module
+core_version_requirement: ^10.1
+package: 'BC Base Build'
+
+dependencies:
+  - bcbb:bcbb
+  - bcbb:bcbb_layouts
+  - facets:facets
+  - page_manager:page_manager_ui
+  - panels:panels
+  - search_api:search_api_db
