@@ -4,7 +4,11 @@ bcbb_main_sidebar_right:
   template: templates/bcbb_main_sidebar_right
   default_region: main
   regions:
+    top:
+      label: Top
     main:
       label: Main content
     sidebar:
       label: Sidebar
+    bottom:
+      label: Bottom

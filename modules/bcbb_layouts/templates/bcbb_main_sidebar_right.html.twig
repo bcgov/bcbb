@@ -1,10 +1,30 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-3 order-2 sidebar-region">
-      {{ content.sidebar }}
+  {% if content.top %}
+    <div class="row">
+      <div class="col-sm-12 top-region">
+        {{ content.top }}
+      </div>
     </div>
-    <div class="col-sm-12 col-md-9 order-1 main-region">
-      {{ content.main }}
+  {% endif %}
+  {% if content.sidebar or content.main %}
+    <div class="row">
+      {% if content.sidebar %}
+        <div class="col-sm-12 col-md-3 order-2 sidebar-region">
+          {{ content.sidebar }}
+        </div>
+      {% endif %}
+      {% if content.main %}
+        <div class="col-sm-12 col-md-9 order-1 main-region">
+          {{ content.main }}
+        </div>
+      {% endif %}
     </div>
-  </div>
+  {% endif %}
+  {% if content.bottom %}
+    <div class="row">
+      <div class="col-sm-12 bottom-region">
+        {{ content.bottom }}
+      </div>
+    </div>
+  {% endif %}
 </div>
