@@ -9,6 +9,11 @@
  * Implements hook_preprocess_HOOK() for book_navigation.
  */
 function bcbb_book_preprocess_book_navigation(array &$variables): void {
+  // Only display the list of child pages on root book page.
+  if ($variables['current_depth'] > 1) {
+    unset($variables['tree']);
+  }
+
   // Display the summary in the list of child pages.
   if (!empty($variables['tree']['#items'])) {
     foreach ($variables['tree']['#items'] as $nid => &$item) {
