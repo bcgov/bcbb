@@ -14,7 +14,7 @@ class BcbbSearchFunctionalTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
+  protected $defaultTheme = 'bcbb_theme';
 
   /**
    * {@inheritdoc}
