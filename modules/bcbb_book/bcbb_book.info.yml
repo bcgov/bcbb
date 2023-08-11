@@ -7,3 +7,4 @@ package: 'BC Base Build'
 dependencies:
   - bcbb:bcbb
   - drupal:book
+  - toc_filter:toc_filter
