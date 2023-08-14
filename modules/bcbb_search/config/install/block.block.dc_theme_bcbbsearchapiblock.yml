@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - bcbb_search
+    - system
+  theme:
+    - dc_theme
+id: dc_theme_bcbbsearchapiblock
+theme: dc_theme
+region: nav_main
+weight: 0
+provider: null
+plugin: bcbb_search_api_block
+settings:
+  id: bcbb_search_api_block
+  label: 'BCbb Search API Block'
+  label_display: '0'
+  provider: bcbb_search
+  search:
+    search_label: Search
+    search_placeholder: ''
+    search_btn_label: ''
+    search_url: /search/site
+    label_sr_only: false
+    search_input_size: false
+    search_input_size_value: null
+  facets:
+    metadata_type:
+      title: ''
+      enabled: 0
+      override_title: 0
+    primary_responsibility_org:
+      title: ''
+      enabled: 0
+      override_title: 0
+    series:
+      title: ''
+      enabled: 0
+      override_title: 0
+    source_system:
+      title: ''
+      enabled: 0
+      override_title: 0
+    used_in_products:
+      title: ''
+      enabled: 0
+      override_title: 0
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /search/site/
