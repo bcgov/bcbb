@@ -20,6 +20,7 @@
         "drupal/form_mode_control": "^2.1",
         "drupal/inline_entity_form": "^2.0",
         "drupal/linkit": "^6.1",
+        "drupal/metatag": "^2.0",
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.7",
