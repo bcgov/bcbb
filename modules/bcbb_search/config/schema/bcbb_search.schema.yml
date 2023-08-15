@@ -27,11 +27,3 @@ block.settings.bcbb_search_api_block:
         search_input_size_value:
           type: integer
           label: 'search input size'
-    facets:
-      label: 'Facet configuration'
-      type: sequence
-      sequence:
-        type: mapping
-        mapping:
-          title:
-            type: label

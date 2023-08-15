@@ -158,48 +158,6 @@ class BcbbSearchBlock extends BlockBase implements ContainerFactoryPluginInterfa
         ],
       ],
     ];
-    $form['facets'] = [
-      '#title' => $this->t('Facet configuration'),
-      '#type' => 'details',
-    ];
-
-    foreach ($facetsList as $key => $value) {
-      $form['facets'][$key] = [
-        '#title' => $value,
-        '#type' => 'details',
-      ];
-
-      $form['facets'][$key]['enabled'] = [
-        '#type' => 'checkbox',
-        '#title' => $value,
-        '#default_value' => $config['facets'][$key]['enabled'] ?? FALSE,
-      ];
-
-      $form['facets'][$key]['override_title'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t('Override default title for @value', ['@value' => $value]),
-        '#default_value' => $config['facets'][$key]['override_title'] ?? FALSE,
-        '#states' => [
-          'visible' => [
-            ':input[name="settings[facets][' . $key . '][enabled]"]' => ['checked' => TRUE],
-          ],
-        ],
-      ];
-
-      $form['facets'][$key]['title'] = [
-        '#type' => 'textfield',
-        '#title' => $this->t('@value title', ['@value' => $value]),
-        '#default_value' => $config['facets'][$key]['title'] ?? '',
-        '#states' => [
-          'visible' => [
-            ':input[name="settings[facets][' . $key . '][override_title]"]' => ['checked' => TRUE],
-          ],
-          'required' => [
-            ':input[name="settings[facets][' . $key . '][override_title]"]' => ['checked' => TRUE],
-          ],
-        ],
-      ];
-    }
 
     return $form;
   }
@@ -210,7 +168,6 @@ class BcbbSearchBlock extends BlockBase implements ContainerFactoryPluginInterfa
   public function blockSubmit($form, FormStateInterface $form_state): void {
     parent::blockSubmit($form, $form_state);
     $this->configuration['search'] = $form_state->getValue('search');
-    $this->configuration['facets'] = $form_state->getValue('facets');
   }
 
   /**

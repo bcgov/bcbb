@@ -8,7 +8,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\ParseMode\ParseModePluginManager;
-use Drupal\taxonomy\Entity\Term;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -57,7 +56,6 @@ class BcbbSearchApiForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, array $config = NULL): array {
-    $lang = $this->languageManager->getCurrentLanguage()->getId();
 
     $form['search_url'] = [
       '#type' => 'hidden',
@@ -72,48 +70,13 @@ class BcbbSearchApiForm extends FormBase {
     ];
 
     if (!empty($config['search']['label_sr_only'])) {
-      $form['search_keyword']['#title_display'] = 'invisible';
+      $form['search_keyword']['#attributes']['aria-label'] = !empty($config['search']['search_label']) ? $config['search']['search_label'] : $this->t('Search');
+      $form['search_keyword']['#title_display'] = 'hidden';
     }
 
     if (isset($config['search']['search_input_size'])) {
       $form['search_keyword']['#size'] = $config['search']['search_input_size'] ? $config['search']['search_input_size_value'] : NULL;
     }
-
-    if (!empty($config['facets'])) {
-      foreach ($config['facets'] as $facet_key => $settings) {
-        // If the facet is enabled.
-        if ($settings['enabled']) {
-          // Get field name from facet.
-          $facet = $this->entityTypeManager->getStorage('facets_facet')->load($facet_key);
-          $facet_field = $facet->getFieldAlias();
-
-          $facet_items = $this->getFacetResults($facet_field);
-
-          if (!empty($facet_items)) {
-            $options = ['_none' => $this->t('All')];
-
-            foreach ($facet_items as $tid) {
-              // Get term name.
-              $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($tid);
-              if ($term instanceof Term) {
-                if ($term->hasTranslation($lang)) {
-                  $term = $term->getTranslation($lang);
-                }
-                $name = $term->getName();
-                $options[$facet_key . ':' . $tid] = $name;
-              }
-            }
-
-            $form['facets_' . $facet_key] = [
-              '#type' => 'select',
-              '#title' => $settings['override_title'] ? $settings['title'] : $facet->getName(),
-              '#options' => $options,
-            ];
-          }
-        }
-      }
-    }
-
     // Add a submit button that handles the submission of the form.
     $form['actions']['submit'] = [
       '#type' => 'submit',
@@ -130,7 +93,6 @@ class BcbbSearchApiForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $formState = $form_state->getValues();
     $query = NULL;
 
     // Get search terms.
@@ -140,87 +102,11 @@ class BcbbSearchApiForm extends FormBase {
       $query = ['search_api_fulltext' => $formKeyword];
     }
 
-    // Get existing query params from block config.
     $formAction = $form_state->getValue('search_url');
-
-    $url_components = parse_url($formAction);
-
-    if (!empty($url_components['query'])) {
-      parse_str($url_components['query'], $params);
-      if (!empty($params['f'])) {
-        foreach ($params['f'] as $f) {
-          $query['f'][] = $f;
-        }
-      }
-    }
-
-    // Get query param from user selection.
-    foreach ($formState as $key => $value) {
-      if (strpos($key, 'facets_') !== FALSE && $value != '_none') {
-        $query['f'][] = $value;
-      }
-    }
 
     // Build search URL.
     $url = Url::fromUserInput($formAction, ['query' => $query]);
     $form_state->setRedirectUrl($url);
-  }
-
-  /**
-   * Get the facet results.
-   *
-   * @param string $field
-   *   The facet field.
-   *
-   * @return array
-   *   Array of facet options.
-   */
-  public function getFacetResults(string $field): array {
-    $index = $this->entityTypeManager->getStorage('search_api_index')->load('default_index');
-    $query = $index->query();
-
-    // Change the parse mode for the search.
-    $parse_mode = $this->pluginManagerSearchApiParseMode
-      ->createInstance('direct');
-    $parse_mode->setConjunction('OR');
-    $query->setParseMode($parse_mode);
-
-    // Set fields.
-    $query->setFulltextFields([$field]);
-
-    // Set additional conditions.
-    $query->addCondition('status', 1);
-
-    // Restrict the search to specific languages.
-    $query->setLanguages(['en', 'fr']);
-
-    // Set additional options.
-    // (In this case, retrieve facets, if supported by the backend.)
-    $server = $index->getServerInstance();
-    if ($server->supportsFeature('search_api_facets')) {
-      $query->setOption('search_api_facets', [
-        'type' => [
-          'field' => 'type',
-          'limit' => 20,
-          'operator' => 'and',
-          'min_count' => 1,
-          'missing' => TRUE,
-        ],
-      ]);
-    }
-
-    // Execute the search.
-    $results = $query->execute();
-    $facet_options = [];
-
-    foreach ($results as $result) {
-      $value = $result->getField($field)->getValues();
-      if (!empty($value[0]) && !in_array($value[0], $facet_options)) {
-        $facet_options[] = $value[0];
-      }
-    }
-
-    return $facet_options;
   }
 
 }

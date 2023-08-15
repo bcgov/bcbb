@@ -21,33 +21,12 @@ settings:
     search_label: Search
     search_placeholder: ''
     search_btn_label: ''
-    search_url: /search/*
+    search_url: /search/site
     label_sr_only: false
     search_input_size: false
     search_input_size_value: null
-  facets:
-    metadata_type:
-      title: ''
-      enabled: 0
-      override_title: 0
-    primary_responsibility_org:
-      title: ''
-      enabled: 0
-      override_title: 0
-    series:
-      title: ''
-      enabled: 0
-      override_title: 0
-    source_system:
-      title: ''
-      enabled: 0
-      override_title: 0
-    used_in_products:
-      title: ''
-      enabled: 0
-      override_title: 0
 visibility:
   request_path:
     id: request_path
     negate: true
-    pages: /search/site/
+    pages: /search/*
