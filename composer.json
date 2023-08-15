@@ -27,6 +27,7 @@
         "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",
         "drupal/realname": "^2.0",
+        "drupal/robotstxt": "^1.5",
         "drupal/search_api": "^1.29",
         "drupal/search_api_solr": "^4.2",
         "drupal/shield": "^1.7",
