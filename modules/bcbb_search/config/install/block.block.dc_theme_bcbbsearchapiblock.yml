@@ -8,8 +8,8 @@ dependencies:
     - dc_theme
 id: dc_theme_bcbbsearchapiblock
 theme: dc_theme
-region: nav_main
-weight: 0
+region: search
+weight: -5
 provider: null
 plugin: bcbb_search_api_block
 settings:
@@ -21,7 +21,7 @@ settings:
     search_label: Search
     search_placeholder: ''
     search_btn_label: ''
-    search_url: /search/site
+    search_url: /search/*
     label_sr_only: false
     search_input_size: false
     search_input_size_value: null

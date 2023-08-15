@@ -10,7 +10,7 @@ dependencies:
 id: dc_theme_main_navigation
 theme: dc_theme
 region: nav_main
-weight: 0
+weight: -5
 provider: null
 plugin: 'system_menu_block:main'
 settings:
