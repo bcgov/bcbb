@@ -1,6 +1,6 @@
 block.settings.bcbb_search_api_block:
   type: block_settings
-  label: 'Bcbb Search API Blocks'
+  label: 'BC Base Build Search API Block'
   mapping:
     search:
       type: mapping
