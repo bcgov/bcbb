@@ -85,7 +85,7 @@ class BcbbSearchApiForm extends FormBase {
         'class' => ['btn', 'btn-default'],
       ],
     ];
-
+    $form['#theme'] = 'bcbb_search_form';
     return $form;
   }
 

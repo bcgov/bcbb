@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains bcbb_search.module
+ */
+
+ use Drupal\Core\Form\FormStateInterface;
+
+ /**
+ * Implements hook_theme().
+ */
+function bcbb_search_theme($existing, $type, $theme, $path) {
+  return [
+    'bcbb_search_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}

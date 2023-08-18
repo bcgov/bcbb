@@ -8,7 +8,6 @@ dependencies:
   - bcbb:bcbb
   - bcbb:bcbb_layouts
   - better_exposed_filters:better_exposed_filters
-  - datetime:datetime
   - drupal:node
   - drupal:text
   - drupal:user
