@@ -70,7 +70,7 @@ class BcbbSearchApiForm extends FormBase {
     ];
 
     if (!empty($config['search']['label_sr_only'])) {
-      $form['search_keyword']['#attributes']['aria-label'] = !empty($config['search']['search_label']) ? $config['search']['search_label'] : $this->t('Search');
+      $form['search_keyword']['#attributes']['aria-label'] = !empty($config['search']['search_label']) ? $config['search']['search_label'] : $this->t('Search terms');
       $form['search_keyword']['#title_display'] = 'hidden';
     }
 
@@ -80,7 +80,7 @@ class BcbbSearchApiForm extends FormBase {
     // Add a submit button that handles the submission of the form.
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => !empty($config['search']['search_btn_label']) ? $config['search']['search_btn_label'] : $this->t('Submit'),
+      '#value' => !empty($config['search']['search_btn_label']) ? $config['search']['search_btn_label'] : $this->t('Do search'),
       '#attributes' => [
         'class' => ['btn', 'btn-default'],
       ],
