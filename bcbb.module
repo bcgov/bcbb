@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Module file.
+ */
+
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function bcbb_menu_local_tasks_alter(array &$data, string $route_name, RefinableCacheableDependencyInterface &$cacheability): void {
+  switch ($route_name) {
+    case 'user.login':
+      // Only act if openid_connect is installed.
+      if (!\Drupal::service('module_handler')->moduleExists('openid_connect')) {
+        break;
+      }
+      // Hide password reset tab unless 'showcore' query param is set.
+      $showcore = \Drupal::request()->get('showcore');
+      if (is_null($showcore)) {
+        unset($data['tabs'][0]['user.pass']);
+      }
+      // Include 'showcore' query param in cache context.
+      $cacheability->addCacheContexts([
+        'url.query_args:showcore',
+      ]);
+      break;
+  }
+}
