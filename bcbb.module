@@ -29,3 +29,18 @@ function bcbb_menu_local_tasks_alter(array &$data, string $route_name, Refinable
       break;
   }
 }
+
+/**
+ * Implements template_preprocess_block().
+ */
+function bcbb_preprocess_block(array &$variables): void {
+  // Only act if openid_connect is installed.
+  if (!\Drupal::service('module_handler')->moduleExists('openid_connect')) {
+    return;
+  }
+
+  // Remove link to password reset from login block.
+  if ($variables['plugin_id'] === 'user_login_block') {
+    unset($variables['content']['user_links']);
+  }
+}
