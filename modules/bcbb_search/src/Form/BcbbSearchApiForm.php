@@ -80,13 +80,11 @@ class BcbbSearchApiForm extends FormBase {
     // Add a submit button that handles the submission of the form.
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      // This will appear as a magnifying glass if these styles are applied:
-      // 'font-family: "Font Awesome 6 Free"; font-weight: 900;'
-      // This is the same as fa-magnifying-glass.
-      '#value' => html_entity_decode('&#xf002;'),
+      // This appears as a magnifying glass in the font set by class icon-bi.
+      '#value' => html_entity_decode('&#xf52a;'),
       '#attributes' => [
         'aria-label' => !empty($config['search']['search_btn_label']) ? $config['search']['search_btn_label'] : $this->t('Do search'),
-        'class' => ['bb-fa-glyph'],
+        'class' => ['icon-bi'],
       ],
     ];
     return $form;
