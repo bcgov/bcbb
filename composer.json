@@ -28,6 +28,7 @@
         "drupal/pathauto": "^1.11",
         "drupal/realname": "^2.0",
         "drupal/robotstxt": "^1.5",
+        "drupal/rabbit_hole": "^2.0@alpha",
         "drupal/role_delegation": "^1.2",
         "drupal/search_api": "^1.29",
         "drupal/search_api_solr": "^4.2",
