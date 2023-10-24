@@ -159,6 +159,12 @@ class BcbbSearchBlock extends BlockBase implements ContainerFactoryPluginInterfa
       ],
     ];
 
+    $form['search']['show_advanced_link'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Show advanced search link'),
+      '#default_value' => $config['search']['show_advanced_link'] ?? FALSE,
+    ];
+
     return $form;
   }
 

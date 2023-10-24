@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\search_api\ParseMode\ParseModePluginManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -68,6 +69,11 @@ class BcbbSearchApiForm extends FormBase {
       '#maxlength' => 255,
       '#placeholder' => !empty($config['search']['search_placeholder']) ? $config['search']['search_placeholder'] : '',
     ];
+
+    if (!empty($config['search']['show_advanced_link']) && $config['search']['search_url']) {
+      $url = Url::fromUserInput($config['search']['search_url']);
+      $form['search_keyword']['#description'] = Link::fromTextAndUrl($this->t('Advanced search'), $url);
+    }
 
     if (!empty($config['search']['label_sr_only'])) {
       $form['search_keyword']['#attributes']['aria-label'] = !empty($config['search']['search_label']) ? $config['search']['search_label'] : $this->t('Search terms');
