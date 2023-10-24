@@ -26,9 +26,10 @@ class BcbbTextBlock extends BlockBase {
     $config = $this->getConfiguration();
 
     $form['content'] = [
-      '#type' => 'textarea',
+      '#type' => 'text_format',
       '#title' => $this->t('Content'),
-      '#default_value' => $config['content'] ?? NULL,
+      '#format' => $config['content']['format'] ?? NULL,
+      '#default_value' => $config['content']['value'] ?? NULL,
     ];
 
     return $form;
@@ -48,7 +49,9 @@ class BcbbTextBlock extends BlockBase {
   public function build(): array {
     $config = $this->getConfiguration();
     return [
-      '#plain_text' => $config['content'],
+      '#type' => 'processed_text',
+      '#format' => $config['content']['format'],
+      '#text' => $config['content']['value'],
     ];
   }
 
