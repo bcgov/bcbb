@@ -9,12 +9,12 @@
   {% if content.sidebar or content.main %}
     <div class="row">
       {% if content.sidebar %}
-        <div class="col-sm-12 col-md-3 order-2 sidebar-region">
+        <div class="col-sm-12 col-md-4 offset-md-1 order-2 sidebar-region">
           {{ content.sidebar }}
         </div>
       {% endif %}
       {% if content.main %}
-        <div class="col-sm-12 col-md-9 order-1 main-region">
+        <div class="col-sm-12 col-md-7 order-1 main-region">
           {{ content.main }}
         </div>
       {% endif %}
