@@ -27,3 +27,6 @@ block.settings.bcbb_search_api_block:
         search_input_size_value:
           type: integer
           label: 'search input size'
+        show_advanced_link:
+          type: boolean
+          label: 'Show advanced search link'
