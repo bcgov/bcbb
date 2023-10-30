@@ -89,6 +89,34 @@ class BcbbSearchFunctionalTest extends BrowserTestBase {
     $this->submitForm($edit, 'Search');
     $this->assertSession()->pageTextContains($edit_article['edit-title-0-value']);
     $this->assertSession()->pageTextNotContains($edit_page['edit-title-0-value']);
+
+    // Place bcbb_search_api_block block with random search path.
+    $this->drupalGet('admin/structure/block/add/bcbb_search_api_block/bcbb_theme', ['query' => ['region' => 'content']]);
+    $this->assertSession()->statusCodeEquals(200);
+    $edit = [
+      'edit-settings-search-search-url' => '/search/site/' . $this->randomMachineName(),
+    ];
+    $this->submitForm($edit, 'Save block');
+    // Test that block appears on the homepage.
+    $this->drupalGet('');
+    $args = [
+      ':search_path' => $edit['edit-settings-search-search-url'],
+    ];
+    $search_block_xpath = $this->assertSession()->buildXPathQuery('//div[contains(@class, "bcbb-search-api-form")]/form[@role = "search"]/input[@value = :search_path]', $args);
+    $this->assertSession()->elementExists('xpath', $search_block_xpath);
+    $advanced_search_xpath = $this->assertSession()->buildXPathQuery('//div[contains(@class, "bcbb-search-api-form")]/form[@role = "search"]/div/div/a[@href = :search_path][text() = "Advanced search"]', $args);
+    $this->assertSession()->elementNotExists('xpath', $advanced_search_xpath);
+    // Edit block to show advanced search link.
+    $this->drupalGet('admin/structure/block/manage/bcbb_theme_bcbbsearchapiblock');
+    $this->assertSession()->statusCodeEquals(200);
+    $edit = [
+      'edit-settings-search-show-advanced-link' => TRUE,
+    ];
+    $this->submitForm($edit, 'Save block');
+    // Test that the block appears on the homepage and shows the search link.
+    $this->drupalGet('');
+    $this->assertSession()->elementExists('xpath', $search_block_xpath);
+    $this->assertSession()->elementExists('xpath', $advanced_search_xpath);
   }
 
 }
