@@ -26,6 +26,9 @@ class BcbbBookFunctionalTest extends BrowserTestBase {
    */
   protected static $modules = [
     'bcbb_book',
+    // For no known reason, without devel installed in tests, details#edit-book
+    // will appear when it should not, causing the tests for this to fail.
+    'devel',
   ];
 
   /**
@@ -37,10 +40,13 @@ class BcbbBookFunctionalTest extends BrowserTestBase {
 
     // Test book module.
     //
-    // Create a Book.
+    // Page for creating a book.
     $this->drupalLogin($this->rootUser);
     $this->drupalGet('node/add/book');
     $this->assertSession()->statusCodeEquals(200);
+    // "Book outline" edit section appears.
+    $this->assertSession()->elementExists('xpath', '//details[@id = "edit-book"]');
+    // Create a Book.
     $edit_book = [
       'edit-title-0-value' => 'Test Book ' . $this->randomString(),
       'edit-book-bid' => 'new',
@@ -49,6 +55,14 @@ class BcbbBookFunctionalTest extends BrowserTestBase {
     $text = $this->assertSession()->elementExists('xpath', '//h1')->getText();
     $this->assertStringContainsString($edit_book['edit-title-0-value'], $text);
     $book_url = $this->getUrl();
+    // "Outline" tab appears.
+    $this->assertSession()->elementExists('xpath', '//nav[@aria-label = "Tabs"]//a[@class = "nav-link"][normalize-space(text()) = "Outline"]');
+    // Book edit page.
+    $this->drupalGet($book_url . '/edit');
+    // "Outline" tab appears.
+    $this->assertSession()->elementExists('xpath', '//nav[@aria-labelledby = "primary-tabs-title"]//a[normalize-space(text()) = "Outline"]');
+    // "Book outline" edit section appears.
+    $this->assertSession()->elementExists('xpath', '//details[@id = "edit-book"]');
     // Create child page.
     $this->drupalGet($book_url);
     $this->clickLink('Add child page');
@@ -98,6 +112,25 @@ class BcbbBookFunctionalTest extends BrowserTestBase {
     $this->drupalGet($child_url);
     // Child page does not have list of child pages.
     $this->assertSession()->elementNotExists('xpath', '//nav[@class = "book-navigation"]/ul[not(@aria-label)]');
+
+    // Book tabs and controls do not appear on non-book content types.
+    $this->drupalGet('admin/structure/book/settings');
+    $this->drupalGet('node/add/page');
+    // "Book outline" edit section does not appear.
+    $this->assertSession()->elementNotExists('xpath', '//details[@id = "edit-book"]');
+    $edit = [
+      'edit-title-0-value' => 'Test Basic Page ' . $this->randomString(),
+    ];
+    $this->submitForm($edit, 'Save');
+    $page_url = $this->getUrl();
+    // "Outline" tab does not appear.
+    $this->assertSession()->elementNotExists('xpath', '//nav[@aria-label = "Tabs"]//a[@class = "nav-link"][normalize-space(text()) = "Outline"]');
+    // Edit page.
+    $this->drupalGet($page_url . '/edit');
+    // "Outline" tab does not appear.
+    $this->assertSession()->elementNotExists('xpath', '//nav[@aria-labelledby = "primary-tabs-title"]//a[normalize-space(text()) = "Outline"]');
+    // "Book outline" edit section does not appear.
+    $this->assertSession()->elementNotExists('xpath', '//details[@id = "edit-book"]');
   }
 
 }
