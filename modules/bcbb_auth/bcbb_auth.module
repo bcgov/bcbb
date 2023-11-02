@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_menu_local_tasks_alter().
@@ -42,5 +44,19 @@ function bcbb_auth_preprocess_block(array &$variables): void {
   // Remove link to password reset from login block.
   if ($variables['plugin_id'] === 'user_login_block') {
     unset($variables['content']['user_links']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bcbb_auth_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Use display name for author on node edit pages.
+  // @todo Remove when fixed via this issue:
+  // https://www.drupal.org/project/drupal/issues/3183509
+  if ($node instanceof NodeInterface  && isset($form['meta']['author']['#markup'])) {
+    $form['meta']['author']['#markup'] = $node->getOwner()->getDisplayName();
   }
 }
