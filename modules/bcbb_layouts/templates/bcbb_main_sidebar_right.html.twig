@@ -1,8 +1,23 @@
-<div{{ attributes.addClass(['container']) }}>
+{%
+  set wrapper_classes = [
+    'container',
+    attributes.hasClass('bcbb-search-wrapper') ? 'bcbb-search-wrapper'
+  ]
+%}
 
+{%
+  set test_classes = [
+    attributes.hasClass('test') ? 'test'
+  ]
+%}
+
+<div{{ attributes.addClass(wrapper_classes) }}>
+
+<div{{ attributes.addClass(test_classes) }}>
   <hr>
   {{ route_name }}
   <hr>
+  </div>
 
   {% if content.top %}
     <div class="row">
