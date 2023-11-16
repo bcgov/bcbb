@@ -1,3 +1,6 @@
+{# create a custom variable and use pre-process function for logic #}
+{% set wrapper_attributes = create_attribute(wrapper_attributes) %}
+
 <div{{ wrapper_attributes.addClass(['container']) }}>
 
 <div{{ content_attributes.addClass(['test3']) }}>
