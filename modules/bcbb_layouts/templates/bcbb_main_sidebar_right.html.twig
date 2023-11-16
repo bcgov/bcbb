@@ -1,14 +1,8 @@
 {# create a custom variable and use pre-process function for logic #}
 {% set wrapper_attributes = create_attribute(wrapper_attributes) %}
+{% set sidebar_attributes = create_attribute(sidebar_attributes) %}
 
 <div{{ wrapper_attributes.addClass(['container']) }}>
-
-<div{{ content_attributes.addClass(['test3']) }}>
-  <hr>
-  {{ route_name }}
-  <hr>
-  </div>
-
   {% if content.top %}
     <div class="row">
       <div class="col-sm-12 top-region">
@@ -19,7 +13,7 @@
   {% if content.sidebar or content.main %}
     <div class="row">
       {% if content.sidebar %}
-        <div class="col-sm-12 col-md-4 offset-md-1 order-2 sidebar-region">
+        <div{{ sidebar_attributes.addClass(['col-sm-12', 'col-md-4', 'offset-md-1', 'order-md-2', 'sidebar-region']) }}>
           {{ content.sidebar }}
         </div>
       {% endif %}
