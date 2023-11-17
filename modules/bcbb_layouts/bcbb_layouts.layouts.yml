@@ -10,6 +10,20 @@ bcbb_main_sidebar_right:
       label: Main content
     sidebar:
       label: Sidebar
+    bottom:
+      label: Bottom
+bcbb_search_results:
+  label: 'BCBB search results'
+  category: 'BCBB Layouts'
+  template: templates/bcbb_search_results
+  default_region: main
+  regions:
+    top:
+      label: Top
+    main:
+      label: Main content
+    sidebar_top:
+      label: Sidebar top
     sidebar_bottom:
       label: Sidebar bottom
     bottom:
