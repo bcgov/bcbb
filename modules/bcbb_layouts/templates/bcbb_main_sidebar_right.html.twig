@@ -1,6 +1,6 @@
 {# create a custom variable and use pre-process function for logic #}
 {% set wrapper_attributes = create_attribute(wrapper_attributes) %}
-{% set sidebar_attributes = create_attribute(sidebar_attributes) %}
+{% set sidebar_wrapper_attributes = create_attribute(sidebar_wrapper_attributes) %}
 
 <div{{ wrapper_attributes.addClass(['container']) }}>
   {% if content.top %}
@@ -10,15 +10,20 @@
       </div>
     </div>
   {% endif %}
-  {% if content.sidebar or content.main %}
+  {% if content.sidebar or content.sidebar_bottom or content.main %}
     <div class="row">
-      {% if content.sidebar %}
-        <div{{ sidebar_attributes.addClass(['col-sm-12', 'col-md-4', 'offset-md-1', 'order-md-2', 'sidebar-region']) }}>
-          {{ content.sidebar }}
+      {% if content.sidebar or content.sidebar_bottom %}
+        <div{{ sidebar_wrapper_attributes.addClass(['col-sm-12', 'col-lg-4', 'offset-lg-1', 'order-lg-2']) }}>
+          {% if content.sidebar %}
+            {{ content.sidebar }}
+          {% endif %}
+          {% if content.sidebar_bottom %}
+            {{ content.sidebar_bottom }}
+          {% endif %}
         </div>
       {% endif %}
       {% if content.main %}
-        <div class="col-sm-12 col-md-7 order-1 main-region">
+        <div class="col-sm-12 col-lg-7 order-1 main-region">
           {{ content.main }}
         </div>
       {% endif %}

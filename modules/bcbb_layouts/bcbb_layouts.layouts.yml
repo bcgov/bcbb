@@ -10,5 +10,7 @@ bcbb_main_sidebar_right:
       label: Main content
     sidebar:
       label: Sidebar
+    sidebar_bottom:
+      label: Sidebar bottom
     bottom:
       label: Bottom
