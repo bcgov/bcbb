@@ -4,16 +4,14 @@
 <hr>{{ route_name }}<hr>
 <div{{ wrapper_attributes.addClass(['container']) }}>
   {% if content.top %}
-    <div class="row">
-      <div class="col-sm-12 top-region">
-        {{ content.top }}
-      </div>
+    <div class="op-region">
+      {{ content.top }}
     </div>
   {% endif %}
   {% if content.sidebar_top or content.sidebar_bottom or content.main %}
     <div class="row">
       {% if content.sidebar_top or content.sidebar_bottom %}
-        <div{{ sidebar_wrapper_attributes.addClass(['col-sm-12', 'col-md-4', 'offset-md-1', 'order-md-2']) }}>
+        <div{{ sidebar_wrapper_attributes.addClass(['col-sm-12', 'col-lg-4', 'offset-lg-1', 'order-lg-2']) }}>
           {% if content.sidebar_top %}
             {{ content.sidebar_top }}
           {% endif %}
@@ -23,7 +21,7 @@
         </div>
       {% endif %}
       {% if content.main %}
-        <div class="col-sm-12 col-md-7 order-1 main-region">
+        <div class="col-sm-12 col-lg-7 order-1 main-region">
           {{ content.main }}
         </div>
       {% endif %}
