@@ -1,7 +1,8 @@
 {# create a custom variable and use pre-process function for logic #}
 {% set wrapper_attributes = create_attribute(wrapper_attributes) %}
 {% set sidebar_wrapper_attributes = create_attribute(sidebar_wrapper_attributes) %}
-<hr>{{ route_name }}<hr>
+{% set facet_wrapper_attributes = create_attribute(facet_wrapper_attributes) %}
+
 <div{{ wrapper_attributes.addClass(['container']) }}>
   {% if content.top %}
     <div class="op-region">
@@ -16,15 +17,24 @@
             {{ content.sidebar_top }}
           {% endif %}
           {% if content.sidebar_bottom %}
-            {{ content.sidebar_bottom }}
-          {% endif %}
+            <section{{ facet_wrapper_attributes }}>
+              <h2 class="mb-0 visually-hidden-lg-up">
+                <button class="disable-pointer-lg-up btn toggle" type="button" data-bs-toggle="collapse" data-bs-target="#{{ toggle_variable }}" aria-expanded="false" aria-controls="{{ toggle_variable }}">{{ 'Show filters'|t }}</button>
+              </h2>
+              <div id="{{ toggle_variable }}" class="collapse">
+                {{ content.sidebar_bottom }}
+              </div>
+            </section>
+          {# end the collapsible area #}
         </div>
       {% endif %}
-      {% if content.main %}
-        <div class="col-sm-12 col-lg-7 order-1 main-region">
-          {{ content.main }}
-        </div>
-      {% endif %}
+    </div>
+  {% endif %}
+    {% if content.main %}
+      <div class="col-sm-12 col-lg-7 order-1 main-region mt-3 mt-lg-0">
+        {{ content.main }}
+      </div>
+    {% endif %}
     </div>
   {% endif %}
   {% if content.bottom %}
