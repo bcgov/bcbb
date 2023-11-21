@@ -1,3 +1,9 @@
+{# This template extends options available in bcbb_main_sidebar_right.html.twig
+# the sidebar has two regions. sidebar_top can be used for whatever blocks are required
+# sidebar_bottom should only be used for facets, there is a button hard coded in this template
+# that will collapse/expand the facets on mobile
+#}
+
 {# create a custom variable and use pre-process function for logic #}
 {% set wrapper_attributes = create_attribute(wrapper_attributes) %}
 {% set sidebar_wrapper_attributes = create_attribute(sidebar_wrapper_attributes) %}
