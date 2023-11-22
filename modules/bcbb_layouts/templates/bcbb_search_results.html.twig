@@ -1,0 +1,54 @@
+{#
+# This template extends options available in bcbb_main_sidebar_right.html.twig
+# the sidebar has two regions. sidebar_top can be used for whatever blocks are
+# required sidebar_bottom should only be used for facets, there is a button
+# hard-coded in this template that will collapse/expand the facets on mobile.
+#}
+
+{# create a custom variable and use pre-process function for logic #}
+{% set wrapper_attributes = create_attribute(wrapper_attributes) %}
+{% set sidebar_wrapper_attributes = create_attribute(sidebar_wrapper_attributes) %}
+{% set facet_wrapper_attributes = create_attribute(facet_wrapper_attributes) %}
+
+<div{{ wrapper_attributes.addClass(['container']) }}>
+  {% if content.top %}
+    <div class="op-region">
+      {{ content.top }}
+    </div>
+  {% endif %}
+  {% if content.sidebar_top or content.sidebar_bottom or content.main %}
+    {% if content.sidebar_top or content.sidebar_bottom %}
+      <div class="row">
+        <div{{ sidebar_wrapper_attributes.addClass(['col-sm-12', 'col-lg-4', 'offset-lg-1', 'order-lg-2']) }}>
+          {% if content.sidebar_top %}
+            {{ content.sidebar_top }}
+          {% endif %}
+          {% if content.sidebar_bottom %}
+            <section{{ facet_wrapper_attributes }}>
+              <h2 class="mb-0 visually-hidden-lg-up">
+                <button class="disable-pointer-lg-up btn toggle" type="button" data-bs-toggle="collapse" data-bs-target="#{{ toggle_variable }}" aria-expanded="false" aria-controls="{{ toggle_variable }}">{{ 'Show filters'|t }}</button>
+              </h2>
+              <div id="{{ toggle_variable }}" class="collapse">
+                {{ content.sidebar_bottom }}
+              </div>
+            </section>
+          {# end the collapsible area #}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {% if content.main %}
+      <div class="col-sm-12 col-lg-7 order-1 main-region mt-3 mt-lg-0">
+        {{ content.main }}
+      </div>
+    {% endif %}
+    </div>
+  {% endif %}
+  {% if content.bottom %}
+    <div class="row">
+      <div class="col-sm-12 bottom-region">
+        {{ content.bottom }}
+      </div>
+    </div>
+  {% endif %}
+</div>
