@@ -61,16 +61,16 @@ class BcbbSearchFunctionalTest extends BrowserTestBase {
 
     $this->drupalGet('search/site');
     // Article.
-    $this->assertSession()->elementTextEquals('xpath', '//a[@data-drupal-facet-item-value = "article"]', 'article (1)');
+    $this->assertSession()->elementTextEquals('xpath', '//a[@data-drupal-facet-item-value = "article"]', 'article 1');
     $this->assertSession()->pageTextContains($edit_article['edit-title-0-value']);
     $this->assertSession()->pageTextContains($edit_article['edit-body-0-value']);
     // Page.
-    $this->assertSession()->elementTextEquals('xpath', '//a[@data-drupal-facet-item-value = "page"]', 'page (1)');
+    $this->assertSession()->elementTextEquals('xpath', '//a[@data-drupal-facet-item-value = "page"]', 'page 1');
     $this->assertSession()->pageTextContains($edit_page['edit-title-0-value']);
     $this->assertSession()->pageTextContains($edit_page['edit-body-0-value']);
 
     // Test facet search.
-    $this->clickLink('article (1)');
+    $this->clickLink('article 1');
     $this->assertSession()->pageTextContains($edit_article['edit-title-0-value']);
     $this->assertSession()->pageTextNotContains($edit_page['edit-title-0-value']);
 
