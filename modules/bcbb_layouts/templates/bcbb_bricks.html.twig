@@ -1,0 +1,67 @@
+<div class="container">
+  {% if content.header %}
+    <div class="container">
+      <div class="row p-4">
+        <div class="header-region">
+          {{ content.header }}
+        </div>
+      </div>
+    </div>
+    <hr>
+  {% endif %}
+
+  {% if content.top_right or content.top_left %}
+    <div class="container">
+      <div class="row p-4">
+        {% if content.top_left %}
+          <div class="col top-left-region">
+            {{ content.top_left }}
+          </div>
+        {% endif %}
+        {% if content.top_right %}
+          <div class="col top-right-region">
+            {{ content.top_right }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+  {% endif %}
+
+  {% if content.main %}
+    <div class="row p-4">
+        <div class="main-region">
+          {{ content.main }}
+        </div>
+    </div>
+    <hr>
+  {% endif %}
+
+  {% if content.bottom_right or content.bottom_left %}
+    <div class="container">
+      <div class="row p-4">
+        {% if content.bottom_left %}
+          <div class="col bottom-left-region">
+            {{ content.bottom_left }}
+          </div>
+        {% endif %}
+        {% if content.bottom_right %}
+          <div class="col bottom-right-region">
+          {{ content.bottom_right }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+  {% endif %}
+
+  {% if content.footer %}
+    <div class="container">
+      <div class="row p-4">
+        <div class="footer-region">
+          {{ content.footer }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
