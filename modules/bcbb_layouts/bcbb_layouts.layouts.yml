@@ -28,3 +28,23 @@ bcbb_search_results:
       label: Sidebar bottom
     bottom:
       label: Bottom
+bcbb_bricks:
+  label: 'BCBB bricks'
+  category: 'BCBB Layouts'
+  template: templates/bcbb_bricks
+  default_region: main
+  regions:
+    header:
+      label: Header 
+    top_left:
+      label: Top left 
+    top_right:
+      label: Top right 
+    main:
+      label: Main content
+    bottom_left:
+      label: Bottom left 
+    bottom_right:
+      label: Bottom right 
+    footer:
+      label: Footer 
