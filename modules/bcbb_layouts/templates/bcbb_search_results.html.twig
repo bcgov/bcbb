@@ -12,7 +12,7 @@
 
 <div{{ wrapper_attributes.addClass(['container']) }}>
   {% if content.top %}
-    <div class="op-region">
+    <div class="top-region">
       {{ content.top }}
     </div>
   {% endif %}
@@ -32,7 +32,6 @@
                 {{ content.sidebar_bottom }}
               </div>
             </section>
-          {# end the collapsible area #}
           {% endif %}
         </div>
       </div>
@@ -42,7 +41,6 @@
         {{ content.main }}
       </div>
     {% endif %}
-    </div>
   {% endif %}
   {% if content.bottom %}
     <div class="row">
