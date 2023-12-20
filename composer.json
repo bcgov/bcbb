@@ -53,6 +53,7 @@
     "extra": {
         "patches": {
             "drupal/form_mode_control": {
+                "3409223 - Pass only strings to UserSession::hasPermission()": "https://www.drupal.org/files/issues/2023-12-20/form_mode_control-string_permission-3409223-6.patch",
                 "3359220 - Add schema for form_mode_control.settings": "https://www.drupal.org/files/issues/2023-05-09/form_mode_control-missing_schema-3359220-2.patch"
             },
             "drupal/page_manager": {
