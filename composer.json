@@ -48,7 +48,7 @@
         "drupal/views_bulk_edit": "^2.8",
         "drupal/views_bulk_operations": "^4.2",
         "drupal/views_data_export": "^1.4",
-        "drush/drush": "^11.0"
+        "drush/drush": "^12.0"
     },
     "extra": {
         "patches": {
