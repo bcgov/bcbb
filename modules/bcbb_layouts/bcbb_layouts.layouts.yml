@@ -46,5 +46,7 @@ bcbb_bricks:
       label: Bottom left 
     bottom_right:
       label: Bottom right 
+    card_group:
+      label: Card group
     footer:
       label: Footer 

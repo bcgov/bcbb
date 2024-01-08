@@ -1,67 +1,56 @@
-<div class="container">
+<div class="container bcbb-brick-layout">
   {% if content.header %}
-    <div class="container">
-      <div class="row p-4">
-        <div class="header-region">
-          {{ content.header }}
-        </div>
-      </div>
+    <div class="header-region mt-4 mb-4 mb-md-5">
+      {{ content.header }}
     </div>
-    <hr>
   {% endif %}
 
   {% if content.top_right or content.top_left %}
-    <div class="container">
-      <div class="row p-4">
-        {% if content.top_left %}
-          <div class="col top-left-region">
-            {{ content.top_left }}
-          </div>
-        {% endif %}
-        {% if content.top_right %}
-          <div class="col top-right-region">
-            {{ content.top_right }}
-          </div>
-        {% endif %}
-      </div>
+    <div class="row mt-4 mb-4 mb-md-5 top-wrapper">
+      {% if content.top_left %}
+        <div class="col-md-6 mb-4 mb-md-0 top-left-region">
+          {{ content.top_left }}
+        </div>
+      {% endif %}
+      {% if content.top_right %}
+        <div class="col-md-5 offset-md-1 top-right-region">
+          {{ content.top_right }}
+        </div>
+      {% endif %}
     </div>
-    <hr>
   {% endif %}
 
   {% if content.main %}
-    <div class="row p-4">
-        <div class="main-region">
-          {{ content.main }}
-        </div>
+    <div class="main-region mb-4 mb-md-5">
+      {{ content.main }}
     </div>
-    <hr>
   {% endif %}
 
   {% if content.bottom_right or content.bottom_left %}
-    <div class="container">
-      <div class="row p-4">
-        {% if content.bottom_left %}
-          <div class="col bottom-left-region">
-            {{ content.bottom_left }}
-          </div>
-        {% endif %}
-        {% if content.bottom_right %}
-          <div class="col bottom-right-region">
-          {{ content.bottom_right }}
-          </div>
-        {% endif %}
-      </div>
+    <div class="row mb-4 mb-md-5 bottom-container">
+      {% if content.bottom_left %}
+        <div class="col bottom-left-region">
+          {{ content.bottom_left }}
+        </div>
+      {% endif %}
+      {% if content.bottom_right %}
+        <div class="col bottom-right-region">
+        {{ content.bottom_right }}
+        </div>
+      {% endif %}
     </div>
-    <hr>
+  {% endif %}
+
+  {% if content.card_group %}
+    <div class="card-group-region card-group mb-4 mb-md-5">
+      {{ content.card_group}}
+    </div>
   {% endif %}
 
   {% if content.footer %}
-    <div class="container">
-      <div class="row p-4">
-        <div class="footer-region">
-          {{ content.footer }}
-        </div>
-      </div>
+    <div class="footer-region mb-4 mb-md-5">
+      {{ content.footer }}
     </div>
   {% endif %}
+
 </div>
