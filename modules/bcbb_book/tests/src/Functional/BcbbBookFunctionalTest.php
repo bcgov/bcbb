@@ -102,7 +102,7 @@ class BcbbBookFunctionalTest extends BrowserTestBase {
     $args = [
       ':title' => $edit_child['edit-title-0-value'],
     ];
-    $xpath = $this->assertSession()->buildXPathQuery('//nav[@class = "book-navigation"]/ul[@aria-label = "Document navigation"]/li/a[@title = "Go to next page"][contains(text(), :title)]', $args);
+    $xpath = $this->assertSession()->buildXPathQuery('//nav[@class = "book-navigation"]/ul[@aria-label = "Document navigation"]/li/a[@title = "Go to next page"]/*[contains(text(), :title)]', $args);
     $this->assertSession()->elementExists('xpath', $xpath);
     // Default "Book traversal links" header is not present.
     $this->assertSession()->pageTextNotContains('Book traversal links');
