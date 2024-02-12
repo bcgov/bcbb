@@ -7,12 +7,12 @@
   {% if content.top_right or content.top_left %}
   <div class="row mt-4 mb-4 mb-md-5 top-wrapper">
     {% if content.top_left %}
-    <div class="col-md-6 mb-4 mb-md-0 top-left-region">
+    <div class="{% if content.top_right %}col-md-6 mb-4 mb-md-0 top-left-region{% else %}col-md-6 top-left-region{% endif %}">
       {{ content.top_left }}
     </div>
     {% endif %}
     {% if content.top_right %}
-    <div class="col-md-5 offset-md-1 top-right-region">
+    <div class="{% if content.top_left %}col-md-5 offset-md-1 top-right-region{% else %}col-md-6 top-right-region{% endif %}">
       {{ content.top_right }}
     </div>
     {% endif %}
