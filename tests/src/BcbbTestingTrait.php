@@ -41,4 +41,22 @@ trait BcbbTestingTrait {
       ->assertSession()->assert(!empty($links[$index]), $message);
   }
 
+  /**
+   * {@inheritdoc}
+   *
+   * Same as parent with minor changes to allowed return value.
+   */
+  public function randomString($length = 8): string {
+    $string = parent::randomString($length);
+
+    // Remove less-than character, which can be interpreted as the start of an
+    // HTML tag.
+    $string = str_replace('<', 'a', $string);
+
+    // Ensure the string ends in a letter. Ending in a period causes problems.
+    $string .= 'a';
+
+    return $string;
+  }
+
 }
