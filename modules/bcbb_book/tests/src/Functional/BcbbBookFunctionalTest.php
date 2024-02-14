@@ -2,24 +2,14 @@
 
 namespace Drupal\Tests\bcbb_book\Functional;
 
-use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\bcbb\Functional\BcbbBrowserTestBase;
 
 /**
  * Functional tests.
  *
  * @group BcBb
  */
-class BcbbBookFunctionalTest extends BrowserTestBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'bcbb_theme';
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $profile = 'standard';
+class BcbbBookFunctionalTest extends BcbbBrowserTestBase {
 
   /**
    * {@inheritdoc}
