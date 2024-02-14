@@ -2,12 +2,17 @@
 
 namespace Drupal\Tests\bcbb\ExistingSite;
 
+require_once __DIR__ . '/../BcbbTestingTrait.php';
+
+use Drupal\Tests\bcbb\BcbbTestingTrait;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
  * Base class for tests that run on the current site.
  */
 abstract class BcbbExistingSiteBase extends ExistingSiteBase {
+
+  use BcbbTestingTrait;
 
   /**
    * {@inheritdoc}
@@ -17,23 +22,6 @@ abstract class BcbbExistingSiteBase extends ExistingSiteBase {
 
     // Cause tests to fail if an error is sent to Drupal logs.
     $this->failOnLoggedErrors();
-  }
-
-  /**
-   * Return the result of ::randomString() without certain characters.
-   *
-   * These characters where causing problems in XPath queries.
-   *
-   * @param int $length
-   *   Length of random string to generate.
-   *
-   * @return string
-   *   The random string.
-   */
-  public function randomString($length = 8): string {
-    $string = parent::randomString($length);
-    $string = str_replace(['<', '{', '}'], '-', $string);
-    return $string;
   }
 
   /**
