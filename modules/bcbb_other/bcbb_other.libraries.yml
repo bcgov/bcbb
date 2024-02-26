@@ -1,0 +1,6 @@
+toggle-details:
+  css:
+    state:
+      css/toggle-details.css: {}
+  js:
+    js/toggle-details.js: {}
