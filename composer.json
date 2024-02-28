@@ -19,7 +19,7 @@
         "drupal/environment_indicator": "^4.0",
         "drupal/facets": "^2.0",
         "drupal/field_group": "^3.4",
-        "drupal/form_mode_control": "^2.1",
+        "drupal/form_mode_control": "^2.2",
         "drupal/inline_entity_form": "^2.0",
         "drupal/linkit": "^6.1",
         "drupal/m4032404": "^1.0",
@@ -53,10 +53,6 @@
     },
     "extra": {
         "patches": {
-            "drupal/form_mode_control": {
-                "3409223 - Pass only strings to UserSession::hasPermission()": "https://www.drupal.org/files/issues/2023-12-20/form_mode_control-string_permission-3409223-6.patch",
-                "3359220 - Add schema for form_mode_control.settings": "https://www.drupal.org/files/issues/2023-05-09/form_mode_control-missing_schema-3359220-2.patch"
-            },
             "drupal/page_manager": {
                 "2756613 - Avoid harcoded prefex and suffix in block region": "https://www.drupal.org/files/issues/page_manager-avoid_prefix_suffix-2756613-8.patch",
                 "3362561 - Path has unnecessary query appended.": "https://www.drupal.org/files/issues/2023-11-29/page_manager-unnecessary_query-3362561-48.patch"
