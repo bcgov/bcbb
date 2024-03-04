@@ -92,7 +92,7 @@ class BcbbSearchFunctionalTest extends BcbbBrowserTestBase {
     $args = [
       ':search_path' => $edit['edit-settings-search-search-url'],
     ];
-    $search_block_xpath = $this->assertSession()->buildXPathQuery('//div[contains(@class, "bcbb-search-api-form")]/form[@role = "search"]/input[@value = :search_path]', $args);
+    $search_block_xpath = $this->assertSession()->buildXPathQuery('//div[contains(@class, "bcbb-search-api-form")]/form[@role = "search"]//input[@value = :search_path]', $args);
     $this->assertSession()->elementExists('xpath', $search_block_xpath);
     $advanced_search_xpath = $this->assertSession()->buildXPathQuery('//div[contains(@class, "bcbb-search-api-form")]/form[@role = "search"]/div/div/a[@href = :search_path][text() = "Advanced search"]', $args);
     $this->assertSession()->elementNotExists('xpath', $advanced_search_xpath);
