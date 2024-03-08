@@ -20,6 +20,7 @@
         "drupal/facets": "^2.0",
         "drupal/field_group": "^3.4",
         "drupal/form_mode_control": "^2.2",
+        "drupal/gin": "^3.0@RC",
         "drupal/inline_entity_form": "^2.0",
         "drupal/linkit": "^6.1",
         "drupal/m4032404": "^1.0",
