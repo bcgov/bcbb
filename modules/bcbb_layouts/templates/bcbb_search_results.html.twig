@@ -24,14 +24,10 @@
           {{ content.sidebar_top }}
         {% endif %}
         {% if content.sidebar_bottom %}
-          <section{{ facet_wrapper_attributes }}>
-            <h2 class="mb-0 visually-hidden-lg-up">
-              <button class="disable-pointer-lg-up btn toggle" type="button" data-bs-toggle="collapse" data-bs-target="#{{ toggle_variable }}" aria-expanded="false" aria-controls="{{ toggle_variable }}">{{ 'Show filters'|t }}</button>
-            </h2>
-            <div id="{{ toggle_variable }}" class="collapse">
-              {{ content.sidebar_bottom }}
-            </div>
-          </section>
+          <details{{ facet_wrapper_attributes }}>
+            <summary>{{ 'Show filters'|t }}</summary>
+            {{ content.sidebar_bottom }}
+          </details>
         {% endif %}
       </div>
     {% endif %}
