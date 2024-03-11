@@ -4,3 +4,7 @@ toggle-details:
       css/toggle-details.css: {}
   js:
     js/toggle-details.js: {}
+
+bcbb-misc:
+  js:
+    js/bcbb_misc.js: {}
