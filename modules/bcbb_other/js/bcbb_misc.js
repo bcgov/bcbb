@@ -11,26 +11,23 @@
    * Event listener for DOMContentLoaded.
    */
   document.addEventListener("DOMContentLoaded", function () {
-    var width;
+    var is_wide_cur;
 
-    // On wide windows, open `details` elements with class `bcbb-desktop-open`.
-    const open_details = function () {
-      if (window.matchMedia("(min-width: 992px)").matches) {
+    // Open/close `details` elements with class `bcbb-desktop-open` when the
+    // window width crosses the wide breakpoint.
+    const open_close_details = function () {
+      var is_wide_new = window.matchMedia("(min-width: 992px)").matches;
+      if (is_wide_cur !== is_wide_new) {
+        is_wide_cur = is_wide_new;
         document.querySelectorAll("details.bcbb-desktop-open").forEach(function (details) {
-          details.open = true;
+          details.open = is_wide_cur;
         });
       }
     };
     // Run above on page load.
-    open_details();
+    open_close_details();
     // Run the above when the window width changes.
-    width = window.innerWidth;
-    window.addEventListener("resize", function () {
-      if (window.innerWidth !== width) {
-        width = window.innerWidth;
-        open_details();
-      }
-    });
+    window.addEventListener("resize", open_close_details);
   });
 
 }(document));
