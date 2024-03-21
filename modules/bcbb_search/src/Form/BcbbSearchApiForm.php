@@ -87,10 +87,9 @@ class BcbbSearchApiForm extends FormBase {
     $form['actions']['submit'] = [
       '#type' => 'submit',
       // This appears as a magnifying glass in the font set by class icon-bi.
-      '#value' => html_entity_decode('&#xf52a;'),
+      '#value' => $this->t('Search'),
       '#attributes' => [
-        'aria-label' => !empty($config['search']['search_btn_label']) ? $config['search']['search_btn_label'] : $this->t('Do search'),
-        'class' => ['icon-bi'],
+        'class' => ['bcbb-search-submit-icon'],
       ],
     ];
     return $form;
